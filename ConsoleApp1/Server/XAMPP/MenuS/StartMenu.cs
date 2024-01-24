@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using static ConsoleApp1.XAMPP.MenuS.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using ConsoleApp1.Client;
 
 namespace ConsoleApp1.XAMPP.MenuS
 {
