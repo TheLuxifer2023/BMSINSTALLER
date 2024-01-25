@@ -28,8 +28,11 @@ namespace ConsoleApp1.XAMPP
 
             if (!System.IO.File.Exists($"{bmsInstallerPath}\\settingsServer.txt"))
             {
-                var rule = new Rule("[red]Введите Интернет (sv_lan 1) или Локальный (sv_lan 0) для сервера Интернет (открытые порты) => Локальный (RadminVPN, Hamachi)[/]");
+                var rule = new Rule("[red]Введите Интернет (sv_lan 1) или Локальный (sv_lan 0)[/]");
+                var rule1 = new Rule("[red]для сервера Интернет (открытые порты) => Локальный(RadminVPN, Hamachi)[/]");
                 AnsiConsole.Write(rule);
+                AnsiConsole.Write(rule1);
+                AnsiConsole.MarkupLine("");
 
                 var svlan = AnsiConsole.Prompt(
                     new SelectionPrompt<string>()
