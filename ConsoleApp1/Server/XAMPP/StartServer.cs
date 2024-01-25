@@ -28,10 +28,17 @@ namespace ConsoleApp1.XAMPP
 
             if (!System.IO.File.Exists($"{bmsInstallerPath}\\settingsServer.txt"))
             {
-                var rule = new Rule("[red]Введите IP для сервера (RadminVPN, Hamachi), или если открыты порты свой айпи провайдера[/]");
+                var rule = new Rule("[red]Введите Интернет (sv_lan 1) или Локальный (sv_lan 0) для сервера Интернет (открытые порты) => Локальный (RadminVPN, Hamachi)[/]");
                 AnsiConsole.Write(rule);
 
-                var ip = AnsiConsole.Ask<string>("[green]Введите IP для сервера[/]:");
+                var svlan = AnsiConsole.Prompt(
+                    new SelectionPrompt<string>()
+                        .Title("[green]Интернет (sv_lan 1) или Локальный (sv_lan 0)[/]?")
+                        .PageSize(10)
+                        .MoreChoicesText("[grey](Двигайтесь вверх и вниз)[/]")
+                        .AddChoices(new[] {
+            "sv_lan 1", "sv_lan 0",
+                        }));
 
                 var port = AnsiConsole.Ask<string>("[green]Введите порт для сервера (Дефолт 27015)[/]:");
 
@@ -44,14 +51,14 @@ namespace ConsoleApp1.XAMPP
                 if (System.IO.File.Exists($"{bmsInstallerPath}\\settingsServer.txt"))
                 {
                     string[] lines = System.IO.File.ReadAllLines(settingsFilePath);
-                    if (lines.Length >= 2 && lines[0].Trim() == ip && lines[1].Trim() == port)
+                    if (lines.Length >= 2 && lines[0].Trim() == svlan && lines[1].Trim() == port)
                     {
                         Console.WriteLine("Values are already written on line 1 and 2 of the file.");
                         return;
                     }
                 }
 
-                System.IO.File.WriteAllLines(settingsFilePath, new string[] { ip, port });
+                System.IO.File.WriteAllLines(settingsFilePath, new string[] { svlan, port });
 
                 Console.Clear();
 
@@ -99,7 +106,7 @@ namespace ConsoleApp1.XAMPP
                 shortcut4.TargetPath = $"{synpath}\\steamapps\\common\\Synergy\\srcds.exe";
 
                 // Set the arguments for the shortcut
-                shortcut4.Arguments = $"-console -game synergy +maxplayers 64 +sv_lan 0 +map \"hl2 d1_trainstation_06\" +exec {cfgServerFile} -ip {ips} -port {ports} -nocrashdialog -insecure -nohltv -threads 8 -heapsize 2048000 -mem_max_heapsize 2048 -mem_max_heapsize_dedicated 512";
+                shortcut4.Arguments = $"-console -game synergy +maxplayers 64 +{ips} +map \"hl2 d1_trainstation_06\" +exec {cfgServerFile} -ip 0.0.0.0 -port {ports} -nocrashdialog -insecure -nohltv -threads 8 -heapsize 2048000 -mem_max_heapsize 2048 -mem_max_heapsize_dedicated 512";
 
                 // Save the shortcut
                 shortcut4.Save();
@@ -144,7 +151,7 @@ namespace ConsoleApp1.XAMPP
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = $"{synpath}\\steamapps\\common\\Synergy\\srcds.exe",
-                        Arguments = $" -console -game synergy +maxplayers 64 +sv_lan 0 +map \"hl2 d1_trainstation_06\" +exec {cfgServerFile} -ip {ips} -port {ports} -nocrashdialog -insecure -nohltv -threads 8 -heapsize 2048000 -mem_max_heapsize 2048 -mem_max_heapsize_dedicated 512",
+                        Arguments = $"-console -game synergy +maxplayers 64 +{ips} +map \"hl2 d1_trainstation_06\" +exec {cfgServerFile} -ip 0.0.0.0 -port {ports} -nocrashdialog -insecure -nohltv -threads 8 -heapsize 2048000 -mem_max_heapsize 2048 -mem_max_heapsize_dedicated 512",
                         RedirectStandardOutput = false,
                         UseShellExecute = false,
                         CreateNoWindow = true
@@ -187,7 +194,7 @@ namespace ConsoleApp1.XAMPP
                     StartInfo = new ProcessStartInfo
                     {
                         FileName = $"{synpath}\\steamapps\\common\\Synergy\\srcds.exe",
-                        Arguments = $" -console -game synergy +maxplayers 64 +sv_lan 0 +map \"hl2 d1_trainstation_06\" +exec {cfgServerFile} -ip {ips} -port {ports} -nocrashdialog -insecure -nohltv -threads 8 -heapsize 2048000 -mem_max_heapsize 2048 -mem_max_heapsize_dedicated 512",
+                        Arguments = $"-console -game synergy +maxplayers 64 +{ips} +map \"hl2 d1_trainstation_06\" +exec {cfgServerFile} -ip 0.0.0.0 -port {ports} -nocrashdialog -insecure -nohltv -threads 8 -heapsize 2048000 -mem_max_heapsize 2048 -mem_max_heapsize_dedicated 512",
                         RedirectStandardOutput = false,
                         UseShellExecute = false,
                         CreateNoWindow = true
