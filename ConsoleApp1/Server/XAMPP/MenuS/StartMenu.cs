@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using static ConsoleApp1.XAMPP.MenuS.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using ConsoleApp1.Client;
+using ConsoleApp1.Server.XAMPP.MenuS;
 
 namespace ConsoleApp1.XAMPP.MenuS
 {
@@ -64,6 +65,7 @@ namespace ConsoleApp1.XAMPP.MenuS
             menu.AddItem(new Button("Запустить сервер BMS"));                 //item index 2
             menu.AddItem(new Input("Путь до папки Steam", firstLine));                  //item index 3
             menu.AddItem(new InputServerLocation("Путь где будет хранится сервер", secondLine));                  //item index 4
+            menu.AddItem(new Button("[Опционально] Сбросить все настройки"));                 //item index 5
 
 
 
@@ -91,6 +93,9 @@ namespace ConsoleApp1.XAMPP.MenuS
 
             //write data of menu item with index 4
             Console.WriteLine(menu.GetData()[4]);
+
+            //write data of menu item with index 5
+            Console.WriteLine(menu.GetData()[5]);
 
 
             switch (menu_id)
@@ -135,7 +140,16 @@ namespace ConsoleApp1.XAMPP.MenuS
                     ststart.StartBMSServer();
 
                     break;
+                case 5:
+                    Console.Clear();
+
+                    DeleteSettings del = new DeleteSettings();
+
+                    del.delsettings();
+
+                    break;
             }
+
 
 
 

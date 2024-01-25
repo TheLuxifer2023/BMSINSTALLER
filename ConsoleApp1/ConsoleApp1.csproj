@@ -194,6 +194,7 @@
     <Compile Include="Server\XAMPP\CenterConsole.cs" />
     <Compile Include="Server\XAMPP\Disclamer.cs" />
     <Compile Include="Server\XAMPP\MenuS\Button.cs" />
+    <Compile Include="Server\XAMPP\MenuS\DeleteSettings.cs" />
     <Compile Include="Server\XAMPP\MenuS\Input.cs" />
     <Compile Include="Server\XAMPP\MenuS\InputServerLocation.cs" />
     <Compile Include="Server\XAMPP\MenuS\Menu.cs" />
@@ -201,7 +202,6 @@
     <Compile Include="Server\XAMPP\MenuS\Option.cs" />
     <Compile Include="Server\XAMPP\MenuS\StartMenu.cs" />
     <Compile Include="Server\XAMPP\MenuS\Switcher.cs" />
-    <Compile Include="Server\XAMPP\MenuS\test.cs" />
     <Compile Include="Server\XAMPP\OpenSettingsServerFile.cs" />
     <Compile Include="Server\XAMPP\PluginsInstall.cs" />
     <Compile Include="Server\XAMPP\SetupSettingsServer.cs" />
