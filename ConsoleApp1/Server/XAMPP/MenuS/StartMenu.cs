@@ -10,6 +10,8 @@ using static ConsoleApp1.XAMPP.MenuS.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using ConsoleApp1.Client;
 using ConsoleApp1.Server.XAMPP.MenuS;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace ConsoleApp1.XAMPP.MenuS
 {
@@ -141,11 +143,12 @@ namespace ConsoleApp1.XAMPP.MenuS
 
                     break;
                 case 5:
-                    Console.Clear();
 
-                    DeleteSettings del = new DeleteSettings();
+                     Console.Clear();
 
-                    del.delsettings();
+                     DeleteSettings del = new DeleteSettings();
+
+                     del.delsettings();
 
                     break;
             }

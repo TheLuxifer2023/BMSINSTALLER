@@ -198,12 +198,17 @@ namespace ConsoleApp1.XAMPP
                     {
                         FileName = $"{synpath}\\steamapps\\common\\Synergy\\srcds.exe",
                         Arguments = $"-console -game synergy +maxplayers 64 +{ips} +map \"hl2 d1_trainstation_06\" +exec {cfgServerFile} -ip 0.0.0.0 -port {ports} -nocrashdialog -insecure -nohltv -threads 8 -heapsize 2048000 -mem_max_heapsize 2048 -mem_max_heapsize_dedicated 512",
+                        RedirectStandardInput = true,
                         RedirectStandardOutput = false,
                         UseShellExecute = false,
                         CreateNoWindow = true
                     }
                 };
                 robocopyProcess2.Start();
+
+
+
+
 
                 /*    ProcessStartInfo startInfo = new ProcessStartInfo
                     {

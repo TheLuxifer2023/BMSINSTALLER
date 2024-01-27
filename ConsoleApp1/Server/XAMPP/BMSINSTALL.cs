@@ -22,6 +22,8 @@ using System.Management.Automation.Runspaces;
 using System.Management.Automation;
 using IronPython.Modules;
 using static Community.CsharpSqlite.Sqlite3;
+using System.Windows.Forms;
+using System.Reflection;
 
 namespace ConsoleApp1.XAMPP
 {
@@ -464,9 +466,15 @@ Remove-Path-Machine -newPath ""{appdata}\App\Python\Scripts""
 
                 Thread.Sleep(5000);
 
-                XAMPP.MenuS.StartMenu st = new MenuS.StartMenu();
-                Console.Clear();
-                st.Start();
+                /* XAMPP.MenuS.StartMenu st = new MenuS.StartMenu();
+                 Console.Clear();
+                 st.Start();*/
+
+
+                Process.Start(Assembly.GetExecutingAssembly().Location);
+                Environment.Exit(0);
+
+
             }
         }
 
@@ -793,9 +801,13 @@ Remove-Path-Machine -newPath ""{appdata}\App\Python\Scripts""
 
             Thread.Sleep(5000);
 
-            XAMPP.MenuS.StartMenu st = new MenuS.StartMenu();
+            /*XAMPP.MenuS.StartMenu st = new MenuS.StartMenu();
             Console.Clear();
-            st.Start();
+            st.Start();*/
+
+            Process.Start(Assembly.GetExecutingAssembly().Location);
+            Environment.Exit(0);
+
 
         }
 
