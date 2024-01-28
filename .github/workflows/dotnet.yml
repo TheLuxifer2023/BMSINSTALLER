@@ -34,8 +34,3 @@ jobs:
           source-url: https://nuget.pkg.github.com/<owner>/index.json
         env:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
-      - run: dotnet build --configuration Release ConsoleApp1
-      - name: Create the package
-        run: dotnet pack --configuration Release <my project>
-      - name: Publish the package to GPR
-        run: dotnet nuget push <my project>/bin/Release/*.nupkg
