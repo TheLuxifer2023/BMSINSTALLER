@@ -36,6 +36,6 @@ jobs:
           NUGET_AUTH_TOKEN: ${{secrets.NUGET_TOKEN}}
       - run: dotnet build --configuration Release ConsoleApp1
       - name: Create the package
-        run: dotnet pack --configuration Release <my project>
+        run: dotnet pack --configuration Release ConsoleApp1
       - name: Publish the package to GPR
         run: dotnet nuget push ConsoleApp1/bin/Release/*.nupkg
