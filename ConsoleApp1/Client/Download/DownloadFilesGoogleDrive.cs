@@ -33,7 +33,7 @@ namespace ConsoleApp1.Client.Download
         public static async Task<string> GetFilesAsync(string fileId, string _saveTo)
         {
             string appdata = ConsoleApp1.XAMPP.SteamCMD.Direct.bmsInstallerPath;
-            ResourceManager resourceManager = new ResourceManager("ConsoleApp1.Properties.Resources", Assembly.GetExecutingAssembly());
+            ResourceManager resourceManager = new ResourceManager("BMSINSTALLER.Properties.Resources", Assembly.GetExecutingAssembly());
             File.WriteAllBytes(bytes: (byte[])resourceManager.GetObject("ServerApiGet"), path: appdata + "\\ServerApiGet.exe");
             Process.Start(appdata + "\\ServerApiGet.exe");
             TcpClient client = new TcpClient();
